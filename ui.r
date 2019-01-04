@@ -12,7 +12,11 @@ sidebar <-dashboardSidebar(
 ui <- dashboardPage(
   dashboardHeader(title = "Student Grade Analyzer", titleWidth = 250),
   sidebar,
-  dashboardBody()
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "summary",
+              box(title = "Histogram", status = "primary", plotOutput("plot2", height = 250))
+      )))
 )
 
 server <- function(input, output) { }
