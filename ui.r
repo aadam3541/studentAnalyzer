@@ -1,5 +1,8 @@
+## ui.R ##
 library(shinydashboard)
 
-header <- dashboardHeader(
-  title = "Student Grade Analyzer"
+dashboardPage(
+    dashboardHeader(title = "Student Grade Analyzer"),
+    dashboardSidebar(),
+    dashboardBody()
 )
