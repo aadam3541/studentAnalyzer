@@ -13,7 +13,7 @@ ui <- dashboardPage(
 
     
     dashboardHeader(title = "Student Grade Analyzer", titleWidth = 500),
-    dashboardSidebar(width = 500),
+    sidebar,
     dashboardBody()
 )
 
