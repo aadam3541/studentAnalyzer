@@ -1,8 +1,13 @@
 ## ui.R ##
+library(shiny)
 library(shinydashboard)
 
-dashboardPage(
+ui <- dashboardPage(
     dashboardHeader(title = "Student Grade Analyzer"),
     dashboardSidebar(),
     dashboardBody()
 )
+
+server <- function(input, output) { }
+
+shinyApp(ui, server)
