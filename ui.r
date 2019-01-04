@@ -3,8 +3,8 @@ library(shiny)
 library(shinydashboard)
 
 ui <- dashboardPage(
-    dashboardHeader(title = "Student Grade Analyzer"),
-    dashboardSidebar(),
+    dashboardHeader(title = "Student Grade Analyzer", titleWidth = 500),
+    dashboardSidebar(width = 500),
     dashboardBody()
 )
 
