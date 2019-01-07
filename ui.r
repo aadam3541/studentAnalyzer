@@ -2,6 +2,8 @@
 library(shiny)
 library(shinydashboard)
 
+myData <- read.csv(file="Book1.csv", header=TRUE, sep=",")
+
 sidebar <-dashboardSidebar(
   sidebarMenu(
     menuItem("Summary", tabName = "summary", icon = icon("book")),
@@ -19,7 +21,7 @@ ui <- dashboardPage(
       tabItem(tabName = "graphs", h2("Hi"))
       )
   )
-      )
+)
     
 
 
