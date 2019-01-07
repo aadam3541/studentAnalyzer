@@ -15,12 +15,13 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "summary",
-              box(title = "Histogram", status = "primary", plotOutput("plot2", height = 250)),
+              box(title = "Histogram", status = "primary", plotOutput("plot2", height = 250))),
       tabItem(tabName = "graphs", h2("Hi"))
       )
+  )
       )
-    )
-)
+    
+
 
 server <- function(input, output) { }
 
