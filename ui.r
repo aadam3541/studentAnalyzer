@@ -17,6 +17,7 @@ averagePlot <- ggplot(data=averages, aes(x=c("GPA", "Midterm 1", "Midterm 2", "F
   theme_minimal() +
   labs(x = "Statistic", y = "Average")
 
+# Create the sidebar
 sidebar <-dashboardSidebar(
   sidebarMenu(
     menuItem("Summary", tabName = "summary", icon = icon("book")),
@@ -24,22 +25,27 @@ sidebar <-dashboardSidebar(
   )
 )
 
+# Create the UI
 ui <- dashboardPage(
+  # Assign title to the header
   dashboardHeader(title = "Student Grade Analyzer", titleWidth = 250),
   sidebar,
   dashboardBody(
+    # Create bodies for each tab on the sidebar
     tabItems(
+      # Summary tab body
       tabItem(tabName = "summary",
               box(title = "Histogram", status = "primary", plotOutput(averagePlot, height = 250))),
+      # Graphs tab body
       tabItem(tabName = "graphs", h2("Hi"))
       ),
+    # Create a fluid row and input a box with "plot2"
     fluidRow(
       box(plotOutput("plot1"))
     )
   )
 )
     
-
 
 server <- function(input, output) { 
 
@@ -61,4 +67,6 @@ server <- function(input, output) {
     
 }
 
+# Create the actual app by loading the UI and server
 shinyApp(ui, server)
+
