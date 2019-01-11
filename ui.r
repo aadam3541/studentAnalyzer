@@ -3,6 +3,7 @@ library(shiny)
 library(shinydashboard)
 library(ggplot2)
 library(plotly)
+library(plyr)
 
 # Read csv file and save in dataframe
 myData <- read.csv(file="Book1.csv", header=TRUE, sep=",")
@@ -29,17 +30,35 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "summary",
-              box(title = "Histogram", status = "primary", plotOutput("plot2", height = 250))),
+              box(title = "Histogram", status = "primary", plotOutput(averagePlot, height = 250))),
       tabItem(tabName = "graphs", h2("Hi"))
       ),
     fluidRow(
-      box(plotOutput("averagePlot"))
+      box(plotOutput("plot1"))
     )
   )
 )
     
 
 
-server <- function(input, output) { }
+server <- function(input, output) { 
+
+  # Load the data into a dataframe
+  clinicalData <- read.csv(file="C:/Users/aadam/Downloads/NLP data.csv", header=TRUE, sep=",")
+  
+  # Create a data frame of the number of occurences of each "TYPE"
+  typeCount <- count(clinicalData, "Type")
+  
+  
+  output$plot1 <- renderPlot({
+    # Create a bar graph of the typeCount dataframe
+    ggplot(data=typeCount, aes(x=Type, y=freq)) +
+      geom_bar(stat="identity") + 
+      scale_x_discrete(limits = typeCount$Type) +
+      theme_minimal() +
+      labs(x = "Type", y = "Number of Occurences")
+  })
+    
+}
 
 shinyApp(ui, server)
