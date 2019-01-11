@@ -46,7 +46,7 @@ ui <- dashboardPage(
   )
 )
     
-
+# Create to server to load data to be linked into UI
 server <- function(input, output) { 
 
   # Load the data into a dataframe
@@ -54,7 +54,6 @@ server <- function(input, output) {
   
   # Create a data frame of the number of occurences of each "TYPE"
   typeCount <- count(clinicalData, "Type")
-  
   
   output$plot1 <- renderPlot({
     # Create a bar graph of the typeCount dataframe
